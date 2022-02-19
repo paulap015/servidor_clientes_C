@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "netutil.h": "c",
+        "pthread.h": "c",
+        "stdbool.h": "c",
+        "limits": "c",
+        "*.tcc": "c"
+    }
+}
