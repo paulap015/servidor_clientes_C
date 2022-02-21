@@ -154,8 +154,10 @@ void  * process(void *  p_client_sd){
               strcat(buf,name_file);strcat(buf," ");
               strcat(buf,tamanio_file);
 
-              pthread_mutex_lock(&mutex); // me bloqueo antes de entrar a la sección critica - cliente no ha abierto nada
-
+              updateClient(client_sd, ruta_s);/*GUARDAR USUARIOS O ACTUALIZAR INFO*/
+              if(fileInUse(client_sd, ruta_s)){
+                pthread_mutex_lock(&mutex); // me bloqueo antes de entrar a la sección critica - cliente no ha abierto nada
+              }
               write(client_sd,buf,BUFSIZ); //enviar encabezado            
               memset(buf,0,sizeof buf); //limpiar buf
               
